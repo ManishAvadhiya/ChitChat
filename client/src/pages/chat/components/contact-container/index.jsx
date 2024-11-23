@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
-import image from "/Users/manishavadhiya/Desktop/RealTIme Chat App/client/ logo.png";
+// import image from "client/public/logo.png";
 import ProfileInfo from "./components/Profile";
 import NewDm from "./components/NewDm";
 import { useEffect, useState } from "react";
@@ -72,7 +72,7 @@ export default Contact;
 const Logo = () => {
   return (
     <div className=" mt-2   flex items-center justify-center  ">
-      <img src={image} alt="Logo" className="h-[50px] mr-1" />
+      {/* <img src={image} alt="Logo" className="h-[50px] mr-1" /> */}
       <span className="text-3xl text-white font-bold font-mono">ChitChat</span>
     </div>
   );

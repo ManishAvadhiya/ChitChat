@@ -8,7 +8,7 @@ import contactRoute from "./routes/ContactRoute.js";
 import setUpSocket from "./socket.js";
 import messageRoute from "./routes/MessageRoute.js";
 import channelRoute from "./routes/ChannelRoute.js";
-
+import path from 'path';
 dotenv.config();
 
 const app = express();
@@ -22,6 +22,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use("/uploads/profile", express.static("uploads/profile"))
 app.use("/uploads/files",express.static("uploads/files"))
 
@@ -33,11 +34,14 @@ app.use("/api/auth",authRoute)
 app.use("/api/users",contactRoute)
 app.use("/api/messages",messageRoute)
 app.use("/api/channels",channelRoute) 
+
+
+
 const server = app.listen(port, () => {
-  console.log("server started");
+  console.log("server started on port "+port);
 });
 setUpSocket(server)
 mongoose
   .connect(databaseURL)
   .then(() => console.log("mongodb connected"))
-  .catch(() => console.log("error occurred"));
+  .catch((err) => console.log("error occurred",err));
