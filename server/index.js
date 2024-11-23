@@ -12,7 +12,7 @@ import path from 'path';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 const databaseURL = process.env.DATABASE_URL;
 
 app.use(
