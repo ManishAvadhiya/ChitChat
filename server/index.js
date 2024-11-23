@@ -15,14 +15,17 @@ const app = express();
 const port = process.env.PORT || 4000;
 const databaseURL = process.env.DATABASE_URL;
 
-app.use(
-  cors({
-    origin: [process.env.ORIGIN],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: 'https://chit-chat-app-sigma.vercel.app', // Your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Allowed HTTP methods
+  credentials: true, // Allow cookies or authentication headers
+};
 
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Handle preflight (OPTIONS) requests
+app.options('*', cors(corsOptions));
 app.use("/uploads/profile", express.static("uploads/profile"))
 app.use("/uploads/files",express.static("uploads/files"))
 
